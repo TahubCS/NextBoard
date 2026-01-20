@@ -1,7 +1,9 @@
 import axios from "axios";
 import type { Column, Task } from "../types";
 
-export const API_URL = "http://localhost:5000/api";
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Then use it like:
+axios.get(`${API_URL}/api/auth/login`)
 
 // Setup Interceptor to automatically add the Token to every request
 axios.interceptors.request.use((config) => {
