@@ -1,4 +1,4 @@
-# NexBoard - Modern Kanban SaaS
+# NexBoard 
 
 NexBoard is a full-stack, drag-and-drop project management tool designed to help teams organize tasks efficiently. Built with the MERN stack (MongoDB, Express, React, Node.js) and TypeScript, it features a sleek, modern UI with dark mode support, rich task details, and fluid animations.
 
