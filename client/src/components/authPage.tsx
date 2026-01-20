@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import api from "../api/boardApi"; // Import the api instance we created
+import api from "../api/boardApi";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -27,7 +27,7 @@ export const AuthPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // 1. Client-side Validation
+        // Client-side Validation
         if (!isLogin) {
             if (password !== confirmPassword) {
                 toast.error("Passwords do not match!");
@@ -37,26 +37,26 @@ export const AuthPage = () => {
                 toast.error("Name is required.");
                 return;
             }
+            if (password.length < 6) {
+                toast.error("Password must be at least 6 characters.");
+                return;
+            }
         }
 
         try {
             const endpoint = isLogin ? "/auth/login" : "/auth/register";
             const payload = isLogin ? { email, password } : { name, email, password };
             
-            // Use the api instance instead of axios directly - it already has /api in baseURL
             const response = await api.post(endpoint, payload);
 
-            if (isLogin) {
+            // Both login AND register now return token, email, and name
+            if (response.data.token) {
                 login(response.data.token, response.data.email, response.data.name);
-            } else {
-                // On register success, switch to login
-                setIsLogin(true);
-                setPassword("");
-                setConfirmPassword("");
-                toast.success("Account created! Please log in.");
+                toast.success(isLogin ? "Welcome back!" : "Account created! Welcome!");
             }
         } catch (err: any) {
-            toast.error(err.response?.data?.message || "An error occurred");
+            const errorMessage = err.response?.data?.message || "An error occurred";
+            toast.error(errorMessage);
         }
     };
 
@@ -90,6 +90,7 @@ export const AuthPage = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required 
+                        minLength={6}
                     />
 
                     {/* Show Confirm Password only when Registering */}
@@ -100,6 +101,7 @@ export const AuthPage = () => {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required 
+                            minLength={6}
                         />
                     )}
 
@@ -110,7 +112,14 @@ export const AuthPage = () => {
 
                 <p className="toggle-text">
                     {isLogin ? "New here?" : "Already have an account?"}{" "}
-                    <span onClick={() => setIsLogin(!isLogin)}>
+                    <span onClick={() => {
+                        setIsLogin(!isLogin);
+                        // Clear form when switching
+                        setName("");
+                        setEmail("");
+                        setPassword("");
+                        setConfirmPassword("");
+                    }}>
                         {isLogin ? "Create an account" : "Log in"}
                     </span>
                 </p>
