@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, Zap, Users, BarChart3, ArrowRight, Sparkles, Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
+import NextBoard from "../assets/NextBoard.svg";
 import "./home.css";
 
 export const Home = () => {
@@ -34,8 +35,7 @@ export const Home = () => {
                 <div className="home-nav-content">
                     <div className="home-nav-logo">
                         <img 
-                            src="/NextBoard.svg" 
-                            alt="NextBoard Logo" 
+                            src={NextBoard} 
                             className="home-logo-image"
                         />
                         <span className="home-logo-text">NextBoard</span>
@@ -193,14 +193,32 @@ export const Home = () => {
             <footer className="home-footer">
                 <div className="footer-content">
                     <div className="footer-logo">
-                        <img 
-                            src="/NextBoard.svg" 
-                            alt="NextBoard Logo" 
-                            className="footer-logo-image"
-                        />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 64 64"
+                            width="64"
+                            height="64"
+                            aria-label="Kanban Board Icon"
+                        >
+                            <circle cx="32" cy="32" r="32" fill="#6366f1" />
+
+                            <g fill="white" opacity="0.95">
+                            <rect x="12" y="18" width="12" height="28" rx="2" opacity="0.3" />
+                            <rect x="13" y="20" width="10" height="6" rx="1" />
+                            <rect x="13" y="28" width="10" height="6" rx="1" />
+
+                            <rect x="26" y="18" width="12" height="28" rx="2" opacity="0.3" />
+                            <rect x="27" y="20" width="10" height="6" rx="1" />
+                            <rect x="27" y="28" width="10" height="6" rx="1" />
+                            <rect x="27" y="36" width="10" height="6" rx="1" />
+
+                            <rect x="40" y="18" width="12" height="28" rx="2" opacity="0.3" />
+                            <rect x="41" y="20" width="10" height="6" rx="1" />
+                            </g>
+                        </svg>
                         <span className="footer-logo-text">NextBoard</span>
                     </div>
-                    <p className="footer-text">© 2026 NextBoard. Built with ❤️ for productive teams.</p>
+                    <p className="footer-text">© 2026 NextBoard. Muhammad Tahub Khatri</p>
                 </div>
             </footer>
         </div>
