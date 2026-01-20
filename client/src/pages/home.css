@@ -1,0 +1,622 @@
+/* ============================================
+   HOME PAGE STYLES
+   ============================================ */
+
+.home-container {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--home-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+    overflow-x: hidden;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON (HOME PAGE)
+   ============================================ */
+.theme-toggle-home {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+}
+
+.theme-toggle-home:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES FOR HOME PAGE
+   ============================================ */
+[data-theme="dark"] .home-container {
+    --home-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+[data-theme="dark"] .hero-title {
+    color: #f0f0f0;
+}
+
+[data-theme="dark"] .hero-subtitle {
+    color: rgba(240, 240, 240, 0.85);
+}
+
+[data-theme="dark"] .btn-primary-hero {
+    background: #579dff;
+    color: white;
+}
+
+[data-theme="dark"] .btn-primary-hero:hover {
+    background: #85b8ff;
+}
+
+[data-theme="dark"] .btn-secondary-hero {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .preview-board {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .preview-column {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .features-section {
+    background: #1d2125;
+}
+
+[data-theme="dark"] .section-title {
+    color: #f0f0f0;
+}
+
+[data-theme="dark"] .feature-card {
+    background: #22272b;
+    border-color: #38414a;
+}
+
+[data-theme="dark"] .feature-card:hover {
+    border-color: #579dff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .feature-card h3 {
+    color: #f0f0f0;
+}
+
+[data-theme="dark"] .feature-card p {
+    color: #8c9bab;
+}
+
+[data-theme="dark"] .cta-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* ============================================
+   FLOATING BACKGROUND ANIMATIONS
+   ============================================ */
+.home-container::before,
+.home-container::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.home-container::before {
+    width: 500px;
+    height: 500px;
+    top: -100px;
+    right: -100px;
+    animation: floatBubble1 20s ease-in-out infinite;
+}
+
+.home-container::after {
+    width: 300px;
+    height: 300px;
+    bottom: -50px;
+    left: -50px;
+    animation: floatBubble2 15s ease-in-out infinite;
+}
+
+@keyframes floatBubble1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-100px, 100px) scale(1.1); }
+}
+
+@keyframes floatBubble2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(100px, -80px) scale(1.15); }
+}
+
+/* ============================================
+   HERO SECTION - FULL VIEWPORT
+   ============================================ */
+.hero-section {
+    min-height: 100vh; /* Full screen initially */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 5%;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* FIXED: Better gradient for highlighted text */
+.gradient-text {
+    display: block;
+    background: linear-gradient(135deg, #ffd89b 0%, #ffeb99 50%, #fff9c4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 20px rgba(255, 235, 153, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* FIXED: CTA Buttons Layout */
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary-hero {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary-hero {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary-hero:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-large {
+    padding: 18px 40px;
+    font-size: 18px;
+}
+
+.hero-note {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ============================================
+   SKETCH ANIMATIONS WITH CONTINUOUS MOTION
+   ============================================ */
+.sketch-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    z-index: 2;
+}
+
+.sketch-line {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+}
+
+.sketch-line-1 {
+    top: 10%;
+    left: 5%;
+    animation: sketchFloat 8s ease-in-out infinite, sketchRotate 20s linear infinite;
+}
+
+.sketch-line-2 {
+    bottom: 15%;
+    right: 10%;
+    animation: sketchRotate 12s linear infinite, sketchPulse 6s ease-in-out infinite;
+}
+
+.sketch-line-3 {
+    top: 50%;
+    right: 20%;
+    animation: sketchPulse 6s ease-in-out infinite, sketchFloat 10s ease-in-out infinite reverse;
+}
+
+.sketch-line path,
+.sketch-line circle {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 3s ease-out forwards;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes sketchFloat {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(20px, -30px); }
+    50% { transform: translate(-20px, 30px); }
+    75% { transform: translate(30px, 15px); }
+}
+
+@keyframes sketchRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes sketchPulse {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.15); opacity: 0.3; }
+}
+
+/* ============================================
+   HERO PREVIEW (Animated Kanban Board)
+   ============================================ */
+.hero-preview {
+    flex: 1;
+    max-width: 650px;
+    animation: fadeInRight 1s ease-out 0.3s both;
+    z-index: 10;
+}
+
+.preview-board {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.preview-column {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 12px;
+    min-height: 300px;
+}
+
+.preview-header {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.preview-card {
+    background: white;
+    height: 60px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Staggered card animations with continuous pulse */
+.card-animate-1 {
+    animation: cardSlideIn 0.6s ease-out 1s both, cardPulse 3s ease-in-out 2s infinite;
+}
+
+.card-animate-2 {
+    animation: cardSlideIn 0.6s ease-out 1.2s both, cardPulse 3s ease-in-out 2.3s infinite;
+}
+
+.card-animate-3 {
+    animation: cardSlideIn 0.6s ease-out 1.4s both, cardPulse 3s ease-in-out 2.6s infinite;
+}
+
+.card-animate-4 {
+    animation: cardSlideIn 0.6s ease-out 1.6s both, cardPulse 3s ease-in-out 2.9s infinite;
+}
+
+.card-animate-5 {
+    animation: cardSlideIn 0.6s ease-out 1.8s both, cardPulse 3s ease-in-out 3.2s infinite;
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+.features-section {
+    padding: 100px 5%;
+    background: white;
+    position: relative;
+    z-index: 10;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 60px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 30px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+    border: 2px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: #1a202c;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.cta-section {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    margin-bottom: 40px;
+}
+
+.cta-content .btn-hero {
+    margin: 0 auto;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.home-footer {
+    background: #1a202c;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 5% 60px;
+        min-height: auto;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+
+    .hero-note {
+        justify-content: center;
+    }
+
+    .preview-board {
+        flex-direction: column;
+    }
+
+    .preview-column {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 5% 40px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-hero {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+    }
+
+    .home-container::before,
+    .home-container::after {
+        width: 200px;
+        height: 200px;
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    /* File Layout */
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    /* Module Handling (The Fix) */
+    "module": "commonjs",             /* Changed from 'nodenext' to standard Node */
+    "moduleResolution": "node",       /* standard node resolution */
+    "esModuleInterop": true,          /* Allows 'import express from "express"' to work */
+    "target": "es2016",               /* Reliable target for backend Node */
+    
+    /* Strict Checks */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+
+    /* Error Fix */
+    "verbatimModuleSyntax": false     /* Disabled to allow 'import' in CommonJS */
+  }
+}
