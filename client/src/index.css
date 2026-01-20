@@ -63,11 +63,35 @@ body {
   flex-shrink: 0;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .nav-brand {
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--text-main);
   letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-user {
+  font-size: 14px;
+  color: var(--text-muted);
+  display: block; /* Hidden on mobile by default */
+}
+
+.nav-user strong {
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 .navbar button {
@@ -89,25 +113,40 @@ body {
 }
 
 .btn-logout {
-  background: rgba(239, 68, 68, 0.1) !important;
-  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-logout:hover {
-  background: rgba(239, 68, 68, 0.2) !important;
+    background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
 }
 
 .btn-icon {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .btn-icon:hover {
@@ -922,9 +961,29 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE - MOBILE
+   RESPONSIVE - MOBILE FIXES
    ============================================ */
 @media (max-width: 768px) {
+
+  .btn-logout span {
+    display: none; /* Hide "Logout" text on mobile */
+  }
+    
+  .btn-icon {
+    padding: 8px;
+  }
+
+  .btn-logout {
+    padding: 10px;
+    min-width: 40px;
+    min-height: 40px;
+    justify-content: center;
+  }
+
+  .nav-user {
+    display: none;
+  }
+
   .navbar {
     padding: 12px 16px;
     height: 56px;
@@ -935,30 +994,97 @@ body {
   }
   
   .app-layout {
-    padding: 16px;
+    padding: 12px;
     height: calc(100vh - 56px);
   }
   
+  /* FIX: Board header on mobile */
   .board-header {
-    padding: 12px 16px;
+    padding: 12px;
     height: auto;
-    flex-direction: column;
-    gap: 12px;
+    min-height: 56px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .board-header > div:first-child {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .board-header > div:last-child {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
   }
   
   .board-header h1 {
-    font-size: 18px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
+  /* FIX: Make header buttons smaller on mobile */
+  .btn-header,
+  .btn-header-add,
+  .btn-header-delete,
+  .btn-back {
+    padding: 8px !important;
+    font-size: 0 !important; /* Hide text */
+  }
+  
+  /* Show only icons on mobile */
+  .btn-header svg,
+  .btn-header-add svg,
+  .btn-header-delete svg,
+  .btn-back svg {
+    margin: 0 !important;
+  }
+  
+  /* FIX: Board container for proper horizontal scroll */
+  .board {
+    gap: 12px;
+    padding-bottom: 16px;
+    padding-right: 12px;
+    /* Ensure smooth touch scrolling */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  
+  /* FIX: Column sizing on mobile */
+  .column {
+    width: 85vw; /* Takes most of screen width */
+    max-width: 320px;
+    min-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  
+  /* FIX: Add column button on mobile */
+  .btn-add-column {
+    min-width: 85vw;
+    max-width: 320px;
+    width: 85vw;
+    flex-shrink: 0;
+  }
+  
+  .add-column-form {
+    min-width: 85vw;
+    max-width: 320px;
+    width: 85vw;
+  }
+  
+  /* Dashboard adjustments */
   .dashboard-container {
-    padding: 24px 16px;
+    padding: 20px 16px;
     height: calc(100vh - 56px);
   }
   
   .dashboard-header {
     flex-direction: column;
     gap: 16px;
-    align-items: flex-start;
+    align-items: stretch;
   }
   
   .dashboard-header h1 {
@@ -966,95 +1092,90 @@ body {
   }
   
   .board-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   
+  .board-card {
+    min-height: 100px;
+  }
+  
+  /* Auth page adjustments */
   .auth-box {
     padding: 32px 24px;
   }
   
-  .column {
-    width: 280px;
+  /* Modal adjustments */
+  .modal-box {
+    max-width: calc(100vw - 32px);
+    margin: 16px;
   }
   
-  .btn-add-column {
-    min-width: 280px;
+  .modal-content {
+    padding: 16px;
+  }
+  
+  .modal-header {
+    padding: 16px;
+  }
+  
+  .modal-footer {
+    padding: 12px 16px;
+    flex-wrap: wrap;
   }
 }
 
 /* ============================================
-   DASHBOARD ANIMATIONS & LAYOUT FIXES
+   EXTRA SMALL SCREENS (< 480px)
    ============================================ */
-
-/* Ensure button doesn't stretch */
-.dashboard-header .btn-primary {
-  width: auto; /* Fixes the stretching issue */
-  flex-shrink: 0; /* Prevents button from squishing title */
-  padding: 10px 24px;
+@media (max-width: 480px) {
+  .column {
+    width: 90vw;
+    min-width: 260px;
+  }
+  
+  .btn-add-column,
+  .add-column-form {
+    min-width: 90vw;
+    width: 90vw;
+  }
+  
+  .board {
+    gap: 10px;
+  }
+  
+  .board-header h1 {
+    font-size: 14px;
+  }
+  
+  .navbar {
+    padding: 10px 12px;
+  }
+  
+  .nav-brand {
+    font-size: 1rem;
+  }
 }
 
-/* 2. Staggered Entrance Animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-item {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0; /* Hidden initially */
-}
-
-/* 3. Theme-Dependent Card Design */
-
-/* LIGHT MODE CARD: Floating Elevation */
-.board-card {
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-app);
-  border: 1px solid var(--border-light);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.board-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary);
-}
-
-/* DARK MODE CARD: Neon Glow Effect */
-[data-theme="dark"] .board-card {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-light);
-  box-shadow: none;
-}
-
-[data-theme="dark"] .board-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary);
-  /* The "Glow" */
-  box-shadow: 0 0 20px -5px rgba(59, 130, 246, 0.4); 
-}
-
-/* 4. Glassmorphism Empty State */
-.empty-state {
-  background: var(--bg-subtle);
-  border: 2px dashed var(--border-color);
-  border-radius: 16px;
-  padding: 60px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Add a subtle shine to empty state in Dark Mode */
-[data-theme="dark"] .empty-state::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-  pointer-events: none;
+/* ============================================
+   TOUCH DEVICE IMPROVEMENTS
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+  /* Make interactive elements bigger for touch */
+  .btn-delete-task,
+  .btn-delete-column {
+    padding: 10px;
+    opacity: 1; /* Always visible on touch devices */
+  }
+  
+  .task-card {
+    padding: 16px;
+  }
+  
+  /* Increase tap targets */
+  .btn-header,
+  .btn-back {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
