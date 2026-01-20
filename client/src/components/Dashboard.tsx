@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { API_URL } from "../api/boardApi";
+import api from "../api/boardApi"; // Use api instead of axios
 import { ArrowRight, Layout, Plus } from "lucide-react";
 import { Modal } from "./Modal";
 import toast from "react-hot-toast";
@@ -19,15 +18,15 @@ export const Dashboard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch user's boards
-        axios.get(`${API_URL}/boards`).then((res) => setBoards(res.data));
+        // Fetch user's boards - using api instead of axios
+        api.get("/boards").then((res) => setBoards(res.data));
     }, []);
 
     const handleCreateConfirm = async () => {
         if (!newBoardTitle.trim()) return toast.error("Title is required");
 
         try {
-            const res = await axios.post(`${API_URL}/boards`, { title: newBoardTitle });
+            const res = await api.post("/boards", { title: newBoardTitle });
             navigate(`/board/${res.data._id}`);
             toast.success("Board created!");
         } catch (error) {
@@ -58,19 +57,15 @@ export const Dashboard = () => {
                             ? 'white' 
                             : 'var(--text-main)',
                             
-                        // Remove border for image cards to look cleaner
                         border: board.background && board.background.includes('url') ? 'none' : '1px solid var(--border-light)',
                         
-                        // Add shadow for readability on images
                         textShadow: board.background && board.background.includes('url') ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
                     }}>
                         <div style={{ flex: 1, width: '100%', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            {/* Dynamic Icon Color */}
                             <Layout 
                                 size={20} 
                                 style={{ 
                                     opacity: 0.8,
-                                    // Force white icon on images, otherwise use primary color
                                     color: board.background && board.background.includes('url') ? 'white' : 'var(--primary)' 
                                 }} 
                             />
@@ -78,7 +73,7 @@ export const Dashboard = () => {
                             <h3 style={{ 
                                 fontSize: '1.15rem', 
                                 fontWeight: 600,
-                                color: 'inherit', // Inherits the color logic calculated above
+                                color: 'inherit',
                                 margin: 0,
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',

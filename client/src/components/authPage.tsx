@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom"; // <--- NEW IMPORT
-import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+import api from "../api/boardApi"; // Import the api instance we created
 import { useAuth } from "../context/AuthContext";
-import { API_URL } from "../api/boardApi";
 import toast from "react-hot-toast";
 
 export const AuthPage = () => {
-    const [searchParams] = useSearchParams(); // <--- NEW: Get URL params
-    const modeFromUrl = searchParams.get("mode"); // <--- Check for ?mode=signup
+    const [searchParams] = useSearchParams();
+    const modeFromUrl = searchParams.get("mode");
     
-    const [isLogin, setIsLogin] = useState(modeFromUrl !== "signup"); // <--- Set initial state
+    const [isLogin, setIsLogin] = useState(modeFromUrl !== "signup");
     
     // Form State
     const [name, setName] = useState("");
@@ -44,7 +43,8 @@ export const AuthPage = () => {
             const endpoint = isLogin ? "/auth/login" : "/auth/register";
             const payload = isLogin ? { email, password } : { name, email, password };
             
-            const response = await axios.post(`${API_URL}${endpoint}`, payload);
+            // Use the api instance instead of axios directly - it already has /api in baseURL
+            const response = await api.post(endpoint, payload);
 
             if (isLogin) {
                 login(response.data.token, response.data.email, response.data.name);
