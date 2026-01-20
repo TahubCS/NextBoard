@@ -29,14 +29,43 @@ export const Home = () => {
 
     return (
         <div className="home-container">
-            {/* THEME TOGGLE BUTTON - TOP RIGHT */}
-            <button 
-                onClick={toggleTheme}
-                className="theme-toggle-home"
-                title="Toggle Theme"
-            >
-                {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-            </button>
+            {/* HEADER/NAVBAR WITH LOGO */}
+            <header className="home-navbar">
+                <div className="home-nav-content">
+                    <div className="home-nav-logo">
+                        <img 
+                            src="/NextBoard.svg" 
+                            alt="NextBoard Logo" 
+                            className="home-logo-image"
+                        />
+                        <span className="home-logo-text">NextBoard</span>
+                    </div>
+                    
+                    <div className="home-nav-actions">
+                        <button 
+                            onClick={toggleTheme}
+                            className="theme-toggle-home"
+                            title="Toggle Theme"
+                        >
+                            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                        </button>
+                        
+                        <button 
+                            className="btn-nav-login" 
+                            onClick={() => navigate("/login")}
+                        >
+                            Login
+                        </button>
+                        
+                        <button 
+                            className="btn-nav-signup" 
+                            onClick={() => navigate("/login?mode=signup")}
+                        >
+                            Sign Up Free
+                        </button>
+                    </div>
+                </div>
+            </header>
 
             {/* HERO SECTION - FULL VIEWPORT */}
             <section className="hero-section">
@@ -149,7 +178,7 @@ export const Home = () => {
             <section className="cta-section">
                 <div className="cta-content">
                     <h2>Ready to boost your productivity?</h2>
-                    <p>Join thousands of teams already organizing their work with Kanban SaaS</p>
+                    <p>Join thousands of teams already organizing their work with NextBoard</p>
                     <button 
                         className="btn-hero btn-primary-hero btn-large" 
                         onClick={() => navigate("/login?mode=signup")}
@@ -162,7 +191,17 @@ export const Home = () => {
 
             {/* FOOTER */}
             <footer className="home-footer">
-                <p>© 2026 NexBoard. Built with ❤️ for productive teams.</p>
+                <div className="footer-content">
+                    <div className="footer-logo">
+                        <img 
+                            src="/NextBoard.svg" 
+                            alt="NextBoard Logo" 
+                            className="footer-logo-image"
+                        />
+                        <span className="footer-logo-text">NextBoard</span>
+                    </div>
+                    <p className="footer-text">© 2026 NextBoard. Built with ❤️ for productive teams.</p>
+                </div>
             </footer>
         </div>
     );

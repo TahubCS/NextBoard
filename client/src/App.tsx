@@ -65,7 +65,7 @@ const Navbar = () => {
         onMouseEnter={(e) => e.currentTarget.style.opacity = "0.8"}
         onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
       >
-        NexBoard
+        NextBoard
       </h2>
       
       <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
