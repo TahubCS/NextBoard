@@ -88,13 +88,10 @@ export const ColumnContainer = ({
                     if (e.key === "Enter") saveTitle();
                 }}
                 style={{
-                    background: "white",
-                    border: "2px solid #0079bf",
-                    borderRadius: "4px",
-                    padding: "4px 8px",
-                    fontSize: "1.17em",
-                    fontWeight: "bold",
-                    width: "100%"
+                    fontSize: "1.1rem",
+                    fontWeight: "600",
+                    width: "100%",
+                    boxSizing: "border-box",
                 }}
                 />
             ) : (
