@@ -222,6 +222,13 @@
 }
 
 /* ============================================
+   DARK MODE FOR AUTH PAGE
+   ============================================ */
+[data-theme="dark"] .auth-page-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+/* ============================================
    FLOATING BACKGROUND ANIMATIONS
    ============================================ */
 .home-container::before,

@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* ============================================
+   ROOT VARIABLES - GLOBAL (ADD THIS NEW SECTION)
+   ============================================ */
+:root {
+  /* GRADIENT BACKGROUNDS - NOW GLOBALLY AVAILABLE */
+  --home-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --dashboard-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+}
+
+/* ============================================
+   DARK MODE GRADIENTS - ADD THIS TOO
+   ============================================ */
+[data-theme="dark"] {
+  --home-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --dashboard-gradient: linear-gradient(135deg, rgba(26, 26, 46, 0.4) 0%, rgba(22, 33, 62, 0.4) 100%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +25,48 @@
 
 button {
   font-family: inherit;
+}
+
+/* ============================================
+   ROOT VARIABLES - GLOBAL
+   ============================================ */
+:root {
+  /* GRADIENT BACKGROUNDS - NOW GLOBAL */
+  --home-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --dashboard-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  
+  /* THEME COLORS - LIGHT MODE */
+  --bg-page: #f5f6f8;
+  --bg-board: #f0f2f5;
+  
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --column-bg: #f1f2f4;
+  --card-bg: #ffffff;
+  --card-hover: #f9fafb;
+  
+  --bg-hover: rgba(0, 0, 0, 0.04);
+  --bg-hover-strong: rgba(0, 0, 0, 0.08);
+  
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  
+  --border-color: #e5e7eb;
+  
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-shadow: rgba(59, 130, 246, 0.15);
+  
+  --board-card-bg: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --board-card-text: #1f2937;
+  --board-card-border: #2563eb;
+  
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --card-glass-bg: rgba(255, 255, 255, 0.7);
+  --card-glass-border: rgba(255, 255, 255, 0.4);
 }
 
 /* ============================================
@@ -45,116 +104,6 @@ body {
 }
 
 /* ============================================
-   NAVBAR STYLES
-   ============================================ */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 900;
-  padding: 14px 28px;
-  background: var(--navbar-bg);
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  height: 60px;
-  flex-shrink: 0;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav-brand {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--text-main);
-  letter-spacing: -0.025em;
-  margin: 0;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-user {
-  font-size: 14px;
-  color: var(--text-muted);
-  display: block; /* Hidden on mobile by default */
-}
-
-.nav-user strong {
-  color: var(--text-main);
-  font-weight: 600;
-}
-
-.navbar button {
-  background: transparent;
-  border: none;
-  color: var(--text-main);
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.navbar button:hover {
-  background: var(--bg-hover);
-}
-
-.btn-logout {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.btn-logout:hover {
-    background: rgba(239, 68, 68, 0.2);
-  border-color: rgba(239, 68, 68, 0.4);
-  transform: translateY(-1px);
-}
-
-.btn-icon {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  min-width: 40px;
-  min-height: 40px;
-}
-
-.btn-icon:hover {
-  background: var(--bg-hover);
-  color: var(--text-main);
-}
-
-/* ============================================
    BOARD PAGE LAYOUT - HORIZONTAL SCROLL ONLY
    ============================================ */
 .app-layout {
@@ -180,33 +129,55 @@ body {
   align-items: center;
   margin-bottom: 20px;
   padding: 16px 24px;
-  background: var(--header-bg);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
   height: 64px;
-  backdrop-filter: blur(12px);
+}
+
+.task-card .description-preview > div[style*="display: flex"] {
+  background: none !important;
+  padding: 0 !important;
+  border: none !important;
+  margin-bottom: 4px;
+}
+
+/* Style the FileText icon and label */
+.task-card svg[width="10"] {
+  color: var(--primary);
+}
+
+/* Priority and Date badges should remain visible */
+.task-card > div[style*="display: flex"][style*="marginTop: 10px"] span {
+  backdrop-filter: blur(8px);
 }
 
 .board-header h1 {
   font-size: 22px;
   font-weight: 700;
-  color: var(--text-main);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
   letter-spacing: -0.5px;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .board-header h1:hover {
-  color: var(--primary);
+  opacity: 0.8;
 }
 
+/* Board Header Buttons - Glass Effect */
 .btn-back {
-  background: var(--bg-hover);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   color: var(--text-main);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -217,13 +188,14 @@ body {
 }
 
 .btn-back:hover {
-  background: var(--bg-hover-strong);
+  background: rgba(255, 255, 255, 0.3);
   transform: translateX(-2px);
 }
 
 .btn-header {
-  background: var(--bg-hover) !important;
-  border: 1px solid var(--border-color) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   color: var(--text-main) !important;
   padding: 10px 14px !important;
   border-radius: 8px !important;
@@ -231,14 +203,15 @@ body {
 }
 
 .btn-header:hover {
-  background: var(--bg-hover-strong) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .btn-header-add {
-  background: var(--primary) !important;
+  background: rgba(102, 126, 234, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
   color: white !important;
-  border: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
   padding: 10px 18px !important;
   border-radius: 8px !important;
   cursor: pointer !important;
@@ -247,28 +220,29 @@ body {
   gap: 8px !important;
   font-weight: 600 !important;
   font-size: 14px !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
   transition: all 0.2s ease !important;
 }
 
 .btn-header-add:hover {
-  background: var(--primary-hover) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+  background: rgba(102, 126, 234, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
   transform: translateY(-1px);
 }
 
 .btn-header-delete {
-  background: rgba(239, 68, 68, 0.1) !important;
-  color: #ef4444 !important;
-  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  background: rgba(239, 68, 68, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   padding: 10px 14px !important;
   border-radius: 8px !important;
   transition: all 0.2s ease !important;
 }
 
 .btn-header-delete:hover {
-  background: rgba(239, 68, 68, 0.2) !important;
-  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3) !important;
+  background: rgba(239, 68, 68, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
 }
 
 /* ============================================
@@ -281,31 +255,63 @@ body {
   flex: 1;
   align-items: flex-start;
   gap: 16px;
-  padding-bottom: 12px;
+  padding-bottom: 0;
   -webkit-overflow-scrolling: touch;
+  margin-bottom: -8px;
+  padding-bottom: 8px;
+}
+
+/* Style the scrollbar to be more subtle */
+.board::-webkit-scrollbar {
+  height: 6px;
+}
+
+.board::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.board::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.board::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Dark mode scrollbar */
+[data-theme="dark"] .board::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .board::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* ============================================
    COLUMNS - VERTICAL SCROLL INTERNAL
    ============================================ */
 .column {
-  background: var(--column-bg);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
   width: 300px;
   flex-shrink: 0;
   border-radius: 12px;
   padding: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.2s ease;
 }
 
 .column:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.2);
 }
 
+/* Column Header - Keep functional styling */
 .column-header {
   display: flex;
   justify-content: space-between;
@@ -313,34 +319,40 @@ body {
   margin-bottom: 12px;
   font-weight: 600;
   font-size: 14px;
-  color: var(--text-main);
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
 }
 
+/* Column Title - Gradient Text */
 .column-header h3 {
   font-size: 15px;
-  font-weight: 600;
-  color: var(--text-main);
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   cursor: pointer;
   margin: 0;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .column-header h3:hover {
-  color: var(--primary);
+  opacity: 0.8;
 }
 
+/* Task Count Badge */
 .task-count {
-  background: var(--bg-hover);
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  color: var(--text-main);
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
   min-width: 24px;
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .task-list {
@@ -356,26 +368,63 @@ body {
 /* ============================================
    TASK CARDS - REFINED
    ============================================ */
+.task-count {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  color: var(--text-main);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.task-card > div[style*="fontSize: 12px"] {
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 8px !important;
+  border-radius: 6px !important;
+  margin-top: 10px !important;
+}
+
+/* Better targeting for description preview */
+.task-card .description-preview {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* TASK CARDS - Glass Effect */
 .task-card {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
   padding: 14px;
   margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 14px;
   position: relative;
   cursor: pointer;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.2s ease;
   color: var(--text-main);
 }
 
 .task-card:hover {
-  background: var(--card-hover);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
 
+/* Task Card Text - Keep Readable */
 .task-card p {
   margin: 0;
   font-weight: 500;
@@ -383,26 +432,35 @@ body {
   color: var(--text-main);
 }
 
+/* Task Textarea (Edit Mode) */
 .task-textarea {
   width: 100%;
   min-height: 60px;
-  border: 2px solid var(--primary);
+  border: 2px solid rgba(102, 126, 234, 0.5);
   border-radius: 8px;
   padding: 10px;
   font-size: 14px;
   font-family: inherit;
   outline: none;
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
   color: var(--text-main);
   resize: vertical;
 }
 
+.task-textarea:focus {
+  border-color: rgba(102, 126, 234, 0.8);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Delete Task Button */
 .btn-delete-task {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: var(--bg-hover);
-  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-muted);
   cursor: pointer;
   opacity: 0;
@@ -415,7 +473,8 @@ body {
 }
 
 .btn-delete-task:hover {
-  background: #ef4444;
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.5);
   color: white;
 }
 
@@ -432,9 +491,10 @@ body {
   gap: 8px;
   width: 100%;
   padding: 10px;
-  background: var(--bg-hover);
-  border: none;
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-main);
   cursor: pointer;
   border-radius: 8px;
   font-weight: 500;
@@ -446,13 +506,16 @@ body {
 }
 
 .btn-show-add:hover {
-  background: var(--bg-hover-strong);
+  background: rgba(255, 255, 255, 0.3);
   color: var(--text-main);
 }
 
+/* Add Task Form */
 .add-task-form {
   padding: 10px;
-  background: var(--column-bg);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   margin-top: 8px;
   flex-shrink: 0;
@@ -461,10 +524,11 @@ body {
 .add-task-input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   margin-bottom: 8px;
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
   color: var(--text-main);
   font-size: 14px;
   font-family: inherit;
@@ -473,8 +537,9 @@ body {
 
 .add-task-input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-shadow);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .add-task-actions {
@@ -483,10 +548,12 @@ body {
   gap: 8px;
 }
 
+/* Add Task Actions Buttons */
 .btn-add {
-  background: var(--primary);
+  background: rgba(102, 126, 234, 0.4);
+  backdrop-filter: blur(10px);
   color: white;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 8px 18px;
   border-radius: 8px;
   cursor: pointer;
@@ -496,15 +563,16 @@ body {
 }
 
 .btn-add:hover {
-  background: var(--primary-hover);
+  background: rgba(102, 126, 234, 0.6);
   transform: translateY(-1px);
 }
 
 .btn-cancel {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  color: var(--text-muted);
+  color: var(--text-main);
   display: flex;
   align-items: center;
   padding: 8px;
@@ -513,17 +581,19 @@ body {
 }
 
 .btn-cancel:hover {
-  background: var(--bg-hover);
+  background: rgba(255, 255, 255, 0.3);
   color: var(--text-main);
 }
 
+/* ADD COLUMN BUTTON - Glass Effect */
 .btn-add-column {
   min-width: 300px;
   height: 48px;
-  background: var(--bg-hover);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
-  border: 2px dashed var(--border-color);
-  color: var(--text-muted);
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  color: var(--text-main);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -536,25 +606,29 @@ body {
 }
 
 .btn-add-column:hover {
-  background: var(--bg-hover-strong);
+  background: rgba(255, 255, 255, 0.25);
   color: var(--text-main);
-  border-color: var(--primary);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Add Column Form */
 .add-column-form {
   min-width: 300px;
-  background: var(--column-bg);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
   padding: 14px;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .add-column-input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
   color: var(--text-main);
   font-size: 14px;
   font-family: inherit;
@@ -562,15 +636,19 @@ body {
 
 .add-column-input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-shadow);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  background: rgba(255, 255, 255, 0.4);
 }
 
+/* Delete Column Button */
 .btn-delete-column {
-  background: transparent;
-  border: none;
+  color: rgba(255, 255, 255, 0.042);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  color: var(--text-muted);
+  color: var(--text-main);
   padding: 6px;
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -580,8 +658,9 @@ body {
 }
 
 .btn-delete-column:hover {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: white;
 }
 
 /* ============================================
@@ -901,7 +980,6 @@ body {
   --bg-page: #f5f6f8;
   --bg-board: #f0f2f5;
   
-  --navbar-bg: #ffffff;
   --header-bg: rgba(255, 255, 255, 0.95);
   --column-bg: #f1f2f4;
   --card-bg: #ffffff;
@@ -925,6 +1003,12 @@ body {
   
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-thumb-hover: #94a3b8;
+
+  --dashboard-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --card-glass-bg: rgba(255, 255, 255, 0.7);
+  --card-glass-border: rgba(255, 255, 255, 0.4);
 }
 
 /* ============================================
@@ -934,7 +1018,6 @@ body {
   --bg-page: #0f1419;
   --bg-board: #1a1d23;
   
-  --navbar-bg: #1a1d23;
   --header-bg: rgba(26, 29, 35, 0.95);
   --column-bg: #22262e;
   --card-bg: #2a2e37;
@@ -958,6 +1041,280 @@ body {
   
   --scrollbar-thumb: #4b5563;
   --scrollbar-thumb-hover: #6b7280;
+
+  --dashboard-gradient: linear-gradient(135deg, rgba(26, 26, 46, 0.4) 0%, rgba(22, 33, 62, 0.4) 100%);
+  --glass-bg: rgba(26, 29, 35, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-glass-bg: rgba(42, 46, 55, 0.7);
+  --card-glass-border: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect for arrow icon */
+.board-card-glass:hover svg:last-child {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   DASHBOARD ANIMATIONS - EPIC
+   ============================================ */
+
+/* Floating blobs */
+@keyframes dashboardFloat1 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 1;
+    }
+    25% { 
+        transform: translate(-80px, 80px) scale(1.1); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(-120px, 150px) scale(0.9); 
+        opacity: 1;
+    }
+    75% { 
+        transform: translate(-60px, 100px) scale(1.05); 
+        opacity: 0.9;
+    }
+}
+
+@keyframes dashboardFloat2 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1) rotate(0deg); 
+    }
+    33% { 
+        transform: translate(100px, -80px) scale(1.15) rotate(120deg); 
+    }
+    66% { 
+        transform: translate(60px, -120px) scale(0.95) rotate(240deg); 
+    }
+}
+
+@keyframes dashboardFloat3 {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+        opacity: 1;
+    }
+}
+
+/* Particle floating */
+@keyframes particleFloat {
+    0%, 100% { 
+        transform: translate(0, 0); 
+        opacity: 0.3;
+    }
+    25% { 
+        transform: translate(30px, -40px); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translate(-20px, -80px); 
+        opacity: 0.2;
+    }
+    75% { 
+        transform: translate(40px, -60px); 
+        opacity: 0.5;
+    }
+}
+
+/* Header slide in */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card slide up */
+@keyframes cardSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Gradient shift animation */
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Gradient pulse */
+@keyframes gradientPulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+/* Button shine effect */
+@keyframes buttonShine {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 200%;
+    }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   DASHBOARD HOVER EFFECTS
+   ============================================ */
+
+/* Card shimmer on hover */
+.board-card-premium:hover .card-shimmer {
+    opacity: 1;
+    animation: shimmer 1.5s ease-in-out;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Arrow slide on card hover */
+.board-card-premium:hover .board-arrow {
+    transform: translateX(4px);
+}
+
+/* Icon container scale on hover */
+.board-card-premium:hover > div:first-child > div {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* ============================================
+   DASHBOARD WRAPPER - PURPLE GRADIENT BACKGROUND
+   ============================================ */
+.dashboard-wrapper {
+    min-height: calc(100vh - 60px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 5% 80px;
+}
+
+/* ============================================
+   DASHBOARD GLASS HEADER - BETTER VISIBILITY (LIGHT THEME ONLY)
+   ============================================ */
+.dashboard-header-glass {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 20px !important;
+    padding: 32px 40px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    margin-bottom: 40px !important;
+}
+
+/* ============================================
+   DASHBOARD BOARD CARDS - BETTER CONTRAST (LIGHT THEME ONLY)
+   ============================================ */
+.board-card-premium {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.board-card-premium:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ============================================
+   CREATE BOARD BUTTON - MORE VISIBLE (LIGHT THEME ONLY)
+   ============================================ */
+.btn-create-board-fancy {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #667eea !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.btn-create-board-fancy:hover {
+    background: white !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ============================================
+   DARK THEME - REMOVE GLASS EFFECTS
+   ============================================ */
+[data-theme="dark"] .dashboard-wrapper {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+[data-theme="dark"] .dashboard-header-glass {
+    background: rgba(26, 29, 35, 0.95) !important;
+    backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .board-card-premium {
+    background: rgba(42, 46, 55, 0.9) !important;
+    backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .board-card-premium:hover {
+    background: rgba(51, 55, 63, 0.95) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .btn-create-board-fancy {
+    background: #579dff !important;
+    color: white !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .btn-create-board-fancy:hover {
+    background: #85b8ff !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* ============================================
@@ -965,40 +1322,20 @@ body {
    ============================================ */
 @media (max-width: 768px) {
 
-  .btn-logout span {
-    display: none; /* Hide "Logout" text on mobile */
-  }
+    .dashboard-wrapper > div {
+        padding: 20px 16px !important;
+    }
     
-  .btn-icon {
-    padding: 8px;
-  } 
-
-  .btn-logout {
-    padding: 10px;
-    min-width: 40px;
-    min-height: 40px;
-    justify-content: center;
-  }
-
-  .nav-user {
-    display: none;
-  }
-
-  .navbar {
-    padding: 12px 16px;
-    height: 56px;
-  }
-  
-  .nav-brand {
-    font-size: 1.1rem;
-  }
+    .dashboard-wrapper > div > div {
+        padding: 20px !important;
+        border-radius: 16px !important;
+    }
   
   .app-layout {
     padding: 12px;
     height: calc(100vh - 56px);
   }
   
-  /* FIX: Board header on mobile */
   .board-header {
     padding: 12px;
     height: auto;
@@ -1025,16 +1362,14 @@ body {
     white-space: nowrap;
   }
   
-  /* FIX: Make header buttons smaller on mobile */
   .btn-header,
   .btn-header-add,
   .btn-header-delete,
   .btn-back {
     padding: 8px !important;
-    font-size: 0 !important; /* Hide text */
+    font-size: 0 !important;
   }
   
-  /* Show only icons on mobile */
   .btn-header svg,
   .btn-header-add svg,
   .btn-header-delete svg,
@@ -1042,26 +1377,22 @@ body {
     margin: 0 !important;
   }
   
-  /* FIX: Board container for proper horizontal scroll */
   .board {
     gap: 12px;
     padding-bottom: 16px;
     padding-right: 12px;
-    /* Ensure smooth touch scrolling */
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;
   }
   
-  /* FIX: Column sizing on mobile */
   .column {
-    width: 85vw; /* Takes most of screen width */
+    width: 85vw;
     max-width: 320px;
     min-width: 280px;
     flex-shrink: 0;
     scroll-snap-align: start;
   }
   
-  /* FIX: Add column button on mobile */
   .btn-add-column {
     min-width: 85vw;
     max-width: 320px;
@@ -1075,7 +1406,6 @@ body {
     width: 85vw;
   }
   
-  /* Dashboard adjustments */
   .dashboard-container {
     padding: 20px 16px;
     height: calc(100vh - 56px);
@@ -1100,12 +1430,10 @@ body {
     min-height: 100px;
   }
   
-  /* Auth page adjustments */
   .auth-box {
     padding: 32px 24px;
   }
   
-  /* Modal adjustments */
   .modal-box {
     max-width: calc(100vw - 32px);
     margin: 16px;
@@ -1122,6 +1450,36 @@ body {
   .modal-footer {
     padding: 12px 16px;
     flex-wrap: wrap;
+  }
+
+  .dashboard-wrapper {
+    padding: 40px 4% 60px !important;
+  }
+    
+  .dashboard-header-glass {
+    padding: 24px !important;
+    border-radius: 16px !important;
+  }
+    
+  .dashboard-header-glass h1 {
+      font-size: 24px !important;
+  }
+    
+  .btn-create-board-fancy {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+    
+  .board-card-premium {
+    height: 130px !important;
+    padding: 20px !important;
+  }
+    
+  .dashboard-blob-1,
+  .dashboard-blob-2,
+  .dashboard-blob-3 {
+    width: 300px !important;
+    height: 300px !important;
   }
 }
 
@@ -1147,32 +1505,22 @@ body {
   .board-header h1 {
     font-size: 14px;
   }
-  
-  .navbar {
-    padding: 10px 12px;
-  }
-  
-  .nav-brand {
-    font-size: 1rem;
-  }
 }
 
 /* ============================================
    TOUCH DEVICE IMPROVEMENTS
    ============================================ */
 @media (hover: none) and (pointer: coarse) {
-  /* Make interactive elements bigger for touch */
   .btn-delete-task,
   .btn-delete-column {
     padding: 10px;
-    opacity: 1; /* Always visible on touch devices */
+    opacity: 1;
   }
   
   .task-card {
     padding: 16px;
   }
   
-  /* Increase tap targets */
   .btn-header,
   .btn-back {
     min-width: 44px;
